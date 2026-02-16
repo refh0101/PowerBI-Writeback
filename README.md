@@ -21,15 +21,7 @@ The project uses the **Adventure Works sample dataset** to simulate real‑world
 ## 3. Tools & Platform
 - **Microsoft Fabric**: Provides translytical task flow capabilities.  
 - **Power BI**: Front‑end reporting and visualization tool.  
-- **Adventure Works Dataset**: Sample dataset used for demonstration.  
-- **External APIs (optional)**: REST endpoints for workflow integration.  
+- **Adventure Works Dataset**: Sample dataset used for demonstration.   
 
 
 
-## 4. Translytical Task Flow Syntax Examples
-
-### Add Data
-```sql
--- Add a new customer record
-INSERT INTO AdventureWorks.Customers (CustomerID, Name, Status)
-VALUES (1001, 'John Doe', 'Active');
