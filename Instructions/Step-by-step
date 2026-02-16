@@ -1,0 +1,148 @@
+# Power BI Write‑Back Execution Guide  
+### Using Translytical Task Flows (Preview)
+
+## 1. Setup SQL Database
+1. In Fabric portal, create a new **SQL database**.  
+2. Load the **AdventureWorksLT sample data**.  
+3. Note the database name for later use.
+
+---
+
+## 2. Create User Data Function (UDF)
+1. In your Fabric workspace, select **New Item > User Data Functions**.  
+2. Name the function (e.g., `sqlwriteback`).  
+3. Connect it to your SQL database via **Manage Connections**.  
+4. Note the **connection alias**.
+
+---
+
+## 3. Add Function Code
+4. Test the User Function
+Once you’ve published the function, go to the Functions explorer.
+
+Hover over your function (e.g., write_one_to_sql_db) and select Run.
+
+Provide sample values for the parameters:
+
+productDescription: any string (e.g., "New product description").
+
+productModelId: an integer between 1 and 127.
+
+Select Run.
+
+Review the output message and logs to confirm the function executed successfully.
+
+If errors occur, check database permissions and connection alias.
+
+5. Build the Power BI Report
+Open Power BI Desktop and create a new report.
+
+Connect to your SQL database:
+
+Select OneLake Catalog > SQL Database.
+
+Choose the database you created (e.g., AdventureWorksLT).
+
+Authenticate if prompted.
+
+In the Navigator window, select and load these tables:
+
+SalesLT.ProductDescription
+
+SalesLT.ProductModel
+
+SalesLT.ProductModelProductDescription
+
+Choose DirectQuery mode for live updates.
+
+6. Add Visuals
+Insert a table visual with:
+
+SalesLT.ProductModel > Name
+
+SalesLT.ProductModelProductDescription > ProductModelID
+
+Add a Text slicer visual.
+
+Title it: Write a new product description.
+
+Insert a Blank button under the text slicer.
+
+In the button’s Action settings, set:
+
+Type: Data function
+
+Workspace: the workspace containing your UDF
+
+Function Set: the set containing your UDF (e.g., sqlwriteback)
+
+Data function: your function (e.g., write_one_to_sql_db)
+
+Map parameters:
+
+productDescription: bind to the text slicer.
+
+productModelId: bind to SalesLT.ProductModel > ProductModelID using conditional formatting.
+
+Customize the button:
+
+Label it Enter.
+
+Configure a Loading state with text like Submitting and a spinner icon.
+
+Insert another table visual showing:
+
+SalesLT.ProductModel > Name
+
+SalesLT.ProductDescription > Description
+
+SalesLT.ProductDescription > ModifiedDate
+
+7. Publish the Report
+In Power BI Desktop, select Publish.
+
+Choose the workspace where you want the report hosted.
+
+Once published, open the report in Power BI Service.
+
+If you see a missing credentials error:
+
+Go to File > Settings > Data source credentials.
+
+Select Edit credentials.
+
+Choose an authentication method (Basic or OAuth2).
+
+Sign in with valid credentials.
+
+8. Run the Translytical Task Flow
+In Power BI Service, open the published report.
+
+Select a product from the product table (this passes context to the slicer).
+
+Enter a new description in the text slicer.
+
+Click the Enter button.
+
+If successful:
+
+You’ll see a confirmation message.
+
+The product description table refreshes with the new entry.
+
+If unsuccessful:
+
+You’ll see Something went wrong.
+
+Select View details to see the error (common issues: validation errors, timeouts, misconfigured button, or missing permissions).
+
+9. Permissions
+To allow other users to trigger the function:
+
+Go to the function page in Fabric.
+
+Select Share.
+
+Grant Execute Functions and View Logs permissions.
+
+Add users or groups who need access.
