@@ -7,7 +7,7 @@ Traditionally, Power BI is a read‑only analytics tool. With translytical task 
 
 The project uses the **Adventure Works sample dataset** to simulate real‑world business scenarios.
 
----
+
 
 ## 2. Objectives
 - Enable **write‑back capabilities** in Power BI.  
@@ -18,7 +18,7 @@ The project uses the **Adventure Works sample dataset** to simulate real‑world
   - **Call external APIs**: Trigger workflows or update external systems.  
 - Showcase integration of transactional and analytical workflows in Microsoft Fabric.
 
----
+
 
 ## 3. Tools & Platform
 - **Microsoft Fabric**: Provides translytical task flow capabilities.  
@@ -26,7 +26,7 @@ The project uses the **Adventure Works sample dataset** to simulate real‑world
 - **Adventure Works Dataset**: Sample dataset used for demonstration.  
 - **External APIs (optional)**: REST endpoints for workflow integration.  
 
----
+
 
 ## 4. Translytical Task Flow Syntax Examples
 
