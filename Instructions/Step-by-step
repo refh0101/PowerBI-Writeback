@@ -1,23 +1,24 @@
-# Power BI Write‑Back Execution Guide  
-### Using Translytical Task Flows (Preview)
+Power BI Write‑Back Execution Guide  
 
-## 1. Setup SQL Database
+
+A. Setup SQL Database
+
 1. In Fabric portal, create a new **SQL database**.  
 2. Load the **AdventureWorksLT sample data**.  
 3. Note the database name for later use.
 
----
 
-## 2. Create User Data Function (UDF)
+B. Create User Data Function (UDF)
+
 1. In your Fabric workspace, select **New Item > User Data Functions**.  
 2. Name the function (e.g., `sqlwriteback`).  
 3. Connect it to your SQL database via **Manage Connections**.  
 4. Note the **connection alias**.
 
----
 
-## 3. Add Function Code
-4. Test the User Function
+C. Add Function Code
+
+D. Test the User Function
 Once you’ve published the function, go to the Functions explorer.
 
 Hover over your function (e.g., write_one_to_sql_db) and select Run.
@@ -34,7 +35,8 @@ Review the output message and logs to confirm the function executed successfully
 
 If errors occur, check database permissions and connection alias.
 
-5. Build the Power BI Report
+E. Build the Power BI Report
+
 Open Power BI Desktop and create a new report.
 
 Connect to your SQL database:
@@ -55,7 +57,8 @@ SalesLT.ProductModelProductDescription
 
 Choose DirectQuery mode for live updates.
 
-6. Add Visuals
+F. Add Visuals
+
 Insert a table visual with:
 
 SalesLT.ProductModel > Name
@@ -98,7 +101,8 @@ SalesLT.ProductDescription > Description
 
 SalesLT.ProductDescription > ModifiedDate
 
-7. Publish the Report
+G. Publish the Report
+
 In Power BI Desktop, select Publish.
 
 Choose the workspace where you want the report hosted.
@@ -115,7 +119,7 @@ Choose an authentication method (Basic or OAuth2).
 
 Sign in with valid credentials.
 
-8. Run the Translytical Task Flow
+H. Run the Translytical Task Flow
 In Power BI Service, open the published report.
 
 Select a product from the product table (this passes context to the slicer).
@@ -136,7 +140,8 @@ You’ll see Something went wrong.
 
 Select View details to see the error (common issues: validation errors, timeouts, misconfigured button, or missing permissions).
 
-9. Permissions
+I. Permissions
+
 To allow other users to trigger the function:
 
 Go to the function page in Fabric.
