@@ -1,5 +1,4 @@
 # Power BI Write‑Back Project (Using Translytical Task Flows)
-
 ## 1. Introduction
 This project demonstrates how to enable **write‑back functionality** in Power BI using **Translytical Task Flows** within Microsoft Fabric.  
 Traditionally, Power BI is a read‑only analytics tool. With translytical task flows, end‑users can now perform direct actions on underlying data sources — such as adding, editing, or deleting records — and see those changes reflected immediately in reports.  
