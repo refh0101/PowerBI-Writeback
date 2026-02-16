@@ -1,5 +1,5 @@
-# Power BI Write‑Back Project  
-### Using Translytical Task Flows (Preview)
+# Power BI Write‑Back Project (Using Translytical Task Flows)
+
 
 ## 1. Introduction
 This project demonstrates how to enable **write‑back functionality** in Power BI using **Translytical Task Flows** within Microsoft Fabric.  
